@@ -17,7 +17,7 @@ Prototype Refactor
   - Give persons the ability to poop.
   - When pooping, the stomach should empty.
   */
- function Person(name, age) {
+ /*function Person(name, age) {
     this.name = name;
     this.age = age;
     this.stomach = [];
@@ -33,11 +33,28 @@ Prototype Refactor
     this.stomach = [];
     return this.stomach;
   }
-  const brenda = new Person('Brenda', 20)
-  //console.log(brenda.greet());
-  // console.log(brenda.eat('Rice'));
-  // console.log(brenda.eat('Bread'));
-  // console.log(brenda.poop());
+  const brenda = new Person('Brenda', 20)*/
+  // Refractor the code.
+  
+  class Person{
+    constructor(name, age){
+        this.name = name;
+        this.age = age;
+        this.stomach = []; 
+    }
+    greet(){
+        return `Hi! My name is ${this.name}, I'm ${this.age} years old`;
+    }
+    eat(edible){
+        this.stomach.push(edible);
+        return this.stomach;
+    }
+    poop(){
+        this.stomach = [];
+        return this.stomach;
+    }
+  }
+  let brenda = new Person ('Brenda',20);
     /*
    TASK 2
   
@@ -49,7 +66,7 @@ Prototype Refactor
     - Give cars the ability to be repaired.
     - A repaired car can be driven again.
   */
-  function Car(name, make) {
+ /* function Car(name, make) {
     this.name = name;
     this.make = make;
     this.odometer = 0;
@@ -69,14 +86,30 @@ Prototype Refactor
     this.canItDrive = true;
   }
   const toyota = new Car('Toyota', 'Corolla')
-  // console.log(toyota.drive(100));
-  // console.log(toyota.drive(50));
-  // console.log(toyota.crash());
-  // console.log(toyota.drive(80));
-  // console.log(toyota.drive(100));
-  // console.log(toyota.repair());
-  // console.log(toyota.drive(80));
-  // console.log(toyota.drive(100));
+  // console.log(toyota.drive(100)); */
+  
+  // Refractor the code.
+  class car{
+      constructor(name, make){
+        this.name = name;
+        this.make = make;
+        this.odometer = 0;
+        this.canItDrive = true; 
+      }
+      drive(distance){
+        if(this.canItDrive === false) {
+            return `I crashed at ${this.odometer} miles!`;
+      }
+      this.odometer += distance;
+    return this.odometer;
+
+  }
+  crash(){
+    this.canItDrive = false;
+  }
+  repair(){
+    his.canItDrive = true; 
+  }
   
   //
   
@@ -88,7 +121,7 @@ Prototype Refactor
     - Babies should have the ability to play, which persons don't.
     - By playing, a string is returned with some text of your choosing.
   */
-  function Baby(name, age) {
+  /*function Baby(name, age) {
     Person.call(this, name, age);
   }
   
@@ -96,10 +129,23 @@ Prototype Refactor
   Baby.prototype.play = function() {
     return "Yayy!!! I love playing";
   }
-  const babyBrenda = new Baby('Baby Brenda', 2);
+  const babyBrenda = new Baby('Baby Brenda', 2);*/
   // console.log(babyBrenda.greet());
   // console.log(babyBrenda.eat('Milk'));
   // console.log(babyBrenda.play());
+  //Refractor code
+
+  class Baby extends Person {
+      constructor(name, age){
+          super(name, age);
+      }
+      play(){
+        return "Yayy!!! I love playing";
+      }
+  }
+  
+  //const baaby = new Baby ('Joshua', 5);
+  //display (baaby.play());
   /*
     TASK 4
   
@@ -110,7 +156,7 @@ Prototype Refactor
   //Read constructor that takes book,publisher,genre
   //If a read is not interesting it should not be recommended
   //Otherwise it should display the authors name
-  function Read (book,publisher,genre){
+  /*function Read (book,publisher,genre){
       this.book = book;
       this.publisher = publisher;
       this.genre = genre;
@@ -120,6 +166,20 @@ Prototype Refactor
     if(this.interesting){
       return 'I wont pick ${this.book} for my library'
     }
+  }*/
+
+  class Read{
+      constructor(book,publisher,genr){
+        this.book = book;
+        this.publisher = publisher;
+        this.genre = genre;
+        this.interesting = false; 
+      }
+      recommend(){
+        if(this.interesting){
+            return 'I wont pick ${this.book} for my library'
+          }
+      }
   }
   /*
   
@@ -147,6 +207,7 @@ Prototype Refactor
   GameObject.prototype.destroy = function() {
     return `${this.name} was removed from the game.`;
   }
+
   /*
     === CharacterStats ===
     * healthPoints
