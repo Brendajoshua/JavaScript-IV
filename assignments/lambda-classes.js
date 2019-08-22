@@ -44,6 +44,8 @@ class Student extends Person {
         this.previousBackground = file.previousBackground;
         this.className = file.className;
         this.favSubjects = file.favSubjects;
+        this.projectManager = file.projectManager
+        this.grade = 20;
     }
 
     listsSubjects() {
@@ -58,6 +60,13 @@ class Student extends Person {
     PRAssignment(subject){
         return `${this.name} has  submitted a PR for ${subject}`
 
+    }
+    graduate() {
+        while(this.grade < 70) {
+            this.grade = this.projectManager.gradeStudent(this);
+        }
+        console.log(`${this.name} just graduated!`);
+        return `${this.name} just graduated!`;
     }
 
 }
@@ -85,6 +94,9 @@ class ProjectManager extends Instructor {
         debugsCode(student,subject){
             return `${name} debugs ${student.name}'s code on ${subject}`
 
+        }
+        studentsGrade(){
+            Math.random
         }
     }
 
