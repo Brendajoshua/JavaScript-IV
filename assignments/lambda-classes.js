@@ -17,7 +17,7 @@ let hellen = new Person({name:'Hellen',age:20, location: 'Nairobi'});
 
 // instructor constructor
 class Instructor extends Person {
-    constructor(file, specialty, favLanguage, catchPhrase) {
+    constructor(file) {
         super(file);
         this.specialty = specialty;
         this.favLanguage = favLanguage;
@@ -47,16 +47,49 @@ class Student extends Person {
     }
 
     listsSubjects() {
-            return(this.favSubjects);
+        const name = this.name;
+         this.favSubjects.forEach(function(subject) {
+             console.log(`${name} is studing ${subject}`);
+         })
+         return this.favSubjects;
+     }
         
-    }
+    
     PRAssignment(subject){
         return `${this.name} has  submitted a PR for ${subject}`
 
     }
+
 }
+
 let john = new Student ({name:'John',age:22, location: 'Mombasa', speciality:'redux', favLanguage:'Python', catchPhrase:'Dont forget the homies', previousBackground:'java', className: 'webu3', favSubjects:['math','English']});
 
 console.log('john');
 console.log(john.listsSubjects());
 console.log(john.PRAssignment());
+
+//project manager constructor
+
+class ProjectManager extends Instructor {
+    class ProjectManager extends Instructor {
+        constructor (instructorfile) {
+            super(file, instructorFile);
+            this.gradClassName = pmFile.gradClassName;
+            this.favInstructor = pmFile.favInstructor;
+            this.channel = pmFile.channel;
+        }
+        standUp(slackChannel){
+            return `${name} annouces to ${channel} @ channel standup times!`
+
+        }
+        debugsCode(student,subject){
+            return `${name} debugs ${student.name}'s code on ${subject}`
+
+        }
+    }
+
+    let glad = new ProjectManager({name: "Glad", age: 30, location: "Kisumu"},{previousBackground: "research", className: "webeu2", favSubjects: "C++"}, {gradClassName:"CS1", favInstructor: "Sean", channel: "new slack"});
+
+    console.log('glad');
+    console.log(glad.standUp());
+    console.log(glad.debugsCode());
