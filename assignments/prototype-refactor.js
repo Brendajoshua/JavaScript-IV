@@ -36,7 +36,7 @@ Prototype Refactor
   const brenda = new Person('Brenda', 20)*/
   // Refractor the code.
   
-  class Person{
+  class Person2{
     constructor(name, age){
         this.name = name;
         this.age = age;
@@ -135,7 +135,7 @@ Prototype Refactor
   // console.log(babyBrenda.play());
   //Refractor code
 
-  class Baby extends Person {
+  class Baby extends Person2 {
       constructor(name, age){
           super(name, age);
       }
@@ -144,7 +144,10 @@ Prototype Refactor
       }
   }
   
-  //const baaby = new Baby ('Joshua', 5);
+  let baaby = new Baby ('Joshua', 5);
+  //console.log('baaby');
+  //console.log(baaby.play());
+
   //display (baaby.play());
   /*
     TASK 4

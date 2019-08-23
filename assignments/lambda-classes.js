@@ -27,7 +27,7 @@ class Instructor extends Person {
         return(`Today we are learning about ${subject}`)
     }
     grade(student, subject) {
-        console.log(`${student} receives a perfect score on ${subject}`)
+        return(`${student} receives a perfect score on ${subject}`)
     }
 }
 
@@ -60,6 +60,9 @@ class Student extends Person {
     PRAssignment(subject){
         return `${this.name} has  submitted a PR for ${subject}`
 
+    }
+    sprintChallenge(subject){
+        return `${this.name} has begun sprint challenge on ${subject}`
     }
     graduate() {
         while(this.grade < 70) {
@@ -95,10 +98,7 @@ class ProjectManager extends Instructor {
             return `${name} debugs ${student.name}'s code on ${subject}`
 
         }
-        studentsGrade(){
-            Math.random
-        }
-    }
+        
 
     let glad = new ProjectManager({name: "Glad", age: 30, location: "Kisumu"},{previousBackground: "research", className: "webeu2", favSubjects: "C++"}, {gradClassName:"CS1", favInstructor: "Sean", channel: "new slack"});
 
